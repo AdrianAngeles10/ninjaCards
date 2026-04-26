@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3t3a24wwgcsn"]
+
+[ext_resource type="Script" path="res://scenes/card_3.gd" id="1_hpjs8"]
+[ext_resource type="Texture2D" uid="uid://dqkmekxdc0dm7" path="res://card sprites/Clubs 3.png" id="1_sxt8m"]
+[ext_resource type="Texture2D" uid="uid://cuegay64xqu2k" path="res://card sprites/Card Back 1.png" id="3_q3ovh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xlp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sxt8m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q3ovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q3ovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q3ovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q3ovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q3ovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q3ovh")
+}],
+"loop": true,
+"name": &"vanish",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjfg"]
+size = Vector2(36, 62)
+
+[node name="card3" type="Area2D" groups=["collectible"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_hpjs8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7xlp2")
+animation = &"vanish"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ikjfg")
+
+[node name="death_timer" type="Timer" parent="."]

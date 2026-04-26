@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwsu2sbeyxha5"]
+
+[ext_resource type="Script" path="res://scenes/card_2.gd" id="1_fca7m"]
+[ext_resource type="Texture2D" uid="uid://c31uqfoth6cgy" path="res://card sprites/Clubs 2.png" id="2_onk8c"]
+[ext_resource type="Texture2D" uid="uid://cuegay64xqu2k" path="res://card sprites/Card Back 1.png" id="3_xnl8l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm11o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_onk8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xnl8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xnl8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xnl8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xnl8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xnl8l")
+}],
+"loop": true,
+"name": &"vanish",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjfg"]
+size = Vector2(36, 62)
+
+[node name="card2" type="Area2D" groups=["collectible"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_fca7m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dm11o")
+animation = &"vanish"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ikjfg")
+
+[node name="death_timer" type="Timer" parent="."]
